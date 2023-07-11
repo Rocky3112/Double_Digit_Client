@@ -11,9 +11,15 @@ import slide5 from "../../../assets/home/slide5.jpg"
 
 // import required modules
 import { Pagination } from 'swiper/modules';
+import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 const Caregory = () => {
     return (
-        <Swiper
+        <section>
+          <SectionTitle
+          subHeading={"From 11.00am to 10.00pm"}
+          heading={"order Online"}
+          ></SectionTitle>
+          <Swiper
         slidesPerView={3}
         spaceBetween={30}
         pagination={{
@@ -23,27 +29,28 @@ const Caregory = () => {
         className="mySwiper mb-20 mt-10"
       >
         <SwiperSlide>
-          <img className=' w-3/4' src={slide1} alt="" />
+          <img className=' w-full h-96' src={slide1} alt="" />
           <h1 className=' text-center font-semibold text-3xl -mt-16'>Salad</h1>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide2} alt="" />
+          <img className=' w-full h-96' src={slide2} alt="" />
           <h1 className=' text-center font-semibold text-3xl -mt-16'>Pizza</h1>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide3} alt="" />
+          <img className=' w-full h-96' src={slide3} alt="" />
           <h1 className=' text-center font-semibold text-3xl -mt-16'>Soup</h1>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide4} alt="" />
+          <img className=' w-full h-96' src={slide4} alt="" />
           <h1 className=' text-center font-semibold text-3xl -mt-16'>Dessert</h1>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide5} alt="" />
+          <img className=' w-full h-96' src={slide5} alt="" />
           <h1 className=' text-center font-semibold text-3xl -mt-16'>Salad</h1>
         </SwiperSlide>
         
       </Swiper>
+        </section>
     );
 };
 
