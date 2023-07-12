@@ -20,7 +20,7 @@ const [ menu, setMenu] = useState([])
         subHeading={"From Our Menu"}
         ></SectionTitle>
 
-        <div>
+        <div className=" grid md:grid-cols-2 gap-4">
             {
                 menu.map(item =><MenuItems
                 key ={item._id}
