@@ -12,7 +12,9 @@ const MenuItems = ({item}) => {
                 <p>{recipe}</p>
             </div>
                 <h4 className=" text-yellow-500">{price}</h4>
+                
         </div>
+        
     );
 };
 
