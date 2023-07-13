@@ -1,31 +1,49 @@
+import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+//Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
 
-// import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
-// import {SwiperCore, Navigation } from 'swiper';
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import  { NavigationModule } from 'swiper';
-// SwiperCore.use([NavigationModule]);
-// SwiperCore.use([Navigation]);
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
 
-// const Testimonials = () => {
-//   return (
-//     <div>
-//       <SectionTitle subHeading={'What Our Client Say?'} heading={'Testimonials'} />
+// import required modules
+import { Navigation } from "swiper/modules";
+import { useEffect, useState } from "react";
+import { Rating } from "@smastrom/react-rating";
 
-//       <Swiper navigation={true} modules={[NavigationModule]} className="mySwiper">
-//         <SwiperSlide>Slide 1</SwiperSlide>
-//         <SwiperSlide>Slide 2</SwiperSlide>
-//         <SwiperSlide>Slide 3</SwiperSlide>
-//         <SwiperSlide>Slide 4</SwiperSlide>
-//         <SwiperSlide>Slide 5</SwiperSlide>
-//         <SwiperSlide>Slide 6</SwiperSlide>
-//         <SwiperSlide>Slide 7</SwiperSlide>
-//         <SwiperSlide>Slide 8</SwiperSlide>
-//         <SwiperSlide>Slide 9</SwiperSlide>
-//       </Swiper>
-//     </div>
-//   );
-// };
+import '@smastrom/react-rating/style.css'
 
-// export default Testimonials;
+const Testimonials = () => {
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    fetch("reviews.json")
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, []);
+
+  // const {name, details, _id,rating}=reviews
+  return (
+    <div className="my-20">
+      <SectionTitle
+        subHeading={"What Our Client Say?"}
+        heading={"Testimonials"}
+      />
+
+      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+        {reviews.map((review) => (
+          <SwiperSlide key={review._id}>
+            <div className="px-32 py-20 text-center">
+
+              <Rating className="mx-auto" style={{ maxWidth: 200}} value={review.rating} readOnly />
+              <p className=" py-3">{review.details}</p>
+              <h3 className=" text-3xl text-orange-500">{review.name}</h3>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
+};
+
+export default Testimonials;

@@ -3,7 +3,7 @@ import Boss from "../Boss/Boss";
 import Category from "../Category/Category";
 import Featured from "../Featured/Featured";
 import PopularMenu from "../PopularMenu/PopularMenu";
-// import Testimonials from "../Testimonials/Testimonials";
+import Testimonials from "../Testimonials/Testimonials";
 
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
             <Boss></Boss>
             <PopularMenu></PopularMenu>
             <Featured></Featured>
-            {/* <Testimonials></Testimonials> */}
+            <Testimonials></Testimonials>
             
         </div>
     );
