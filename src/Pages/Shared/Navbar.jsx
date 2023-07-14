@@ -47,6 +47,7 @@ const handleLogOut=()=>{
               {
                 user ?
                 <>
+                <span>{user ?.displayName}</span>
                 <button onClick={handleLogOut} className="btn btn-ghost">Log-Out</button>
                 </>:
                 <><li>
@@ -74,9 +75,10 @@ const handleLogOut=()=>{
               {
                 user ?
                 <>
-                <li>
+                
+                  <span>{user ?.displayName}</span>
                 <button onClick={handleLogOut} className="btn btn-ghost">Log-Out</button>
-                </li>
+                
                 </>:
                 <><li>
                 <Link to="login">Login</Link>
