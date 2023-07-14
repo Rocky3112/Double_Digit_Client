@@ -35,6 +35,9 @@ const Navbar = () => {
               <li>
                 <Link to="/order/salad">Our Shop</Link>
               </li>
+              <li>
+                <Link to="login">Login</Link>
+              </li>
             </ul>
           </div>
           <a className="btn btn-ghost text-3xl">
@@ -52,6 +55,9 @@ const Navbar = () => {
             <li>
               <Link to="/order/salad">Our Shop</Link>
             </li>
+            <li>
+                <Link to="login">Login</Link>
+              </li>
           </ul>
         </div>
         <div className="navbar-end">
