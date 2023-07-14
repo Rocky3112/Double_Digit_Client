@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { Link } from 'react-router-dom';
 const Login = () => {
     const {user,signIn} = useContext(AuthContext);
 
@@ -78,6 +80,9 @@ const Login = () => {
           <input disabled={disable}  className="btn btn-primary" type="submit" value={"Login"} />
         </div>
       </form>
+      <Link to='/signup'>
+      <a><small>New User Create An Account?</small></a>
+      </Link>
     </div>
   </div>
 </div>
