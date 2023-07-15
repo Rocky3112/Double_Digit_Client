@@ -7,15 +7,23 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const FoodCard = ({item}) => {
-    const {name, image,price,recipe } = item;
+    const {name, image,price,recipe,_id } = item;
     const {user} =useContext(AuthContext);
     const navigate =useNavigate();
     const location = useLocation();
 
     const handleAddToCart = item =>{
       console.log(item);
-      if(user){
-        fetch('http://localhost:5000/carts')
+      if(user && user.email){
+        const cartItem ={menuItemId: _id, name,price,image, email:user.email}
+        fetch('http://localhost:5000/carts',{
+          method:'POST',
+          headers:{
+            'content-type':'application/json'
+          },
+          body:JSON.stringify(cartItem)
+
+        })
         .then(res=>res.json())
         .then(data=>{
           if(data.insertedId){
