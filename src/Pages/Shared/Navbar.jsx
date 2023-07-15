@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { FaShoppingCart } from 'react-icons/fa';
 
 const Navbar = () => {
-  const {user,logOut}=useContext(AuthContext);
-const handleLogOut=()=>{
-  logOut()
-  .then( ()=>{})
-  .catch(error=>console.log(error))
-}
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   return (
     <div>
       <div className="navbar fixed bg-opacity-30 z-10 text-white bg-black max-w-screen-xl mx-auto">
@@ -43,17 +44,29 @@ const handleLogOut=()=>{
               <li>
                 <Link to="/order/salad">Our Shop</Link>
               </li>
+              <li>
+              <Link to="/">
+                
+                  <FaShoppingCart></FaShoppingCart>
+                  <div className="badge badge-secondary">+0</div>
+               
+              </Link>
+            </li>
 
-              {
-                user ?
+              {user ? (
                 <>
-                <span>{user ?.displayName}</span>
-                <button onClick={handleLogOut} className="btn btn-ghost">Log-Out</button>
-                </>:
-                <><li>
-                <Link to="login">Login</Link>
-              </li></>
-              }
+                  {/* <span>{user?.displayName}</span> */}
+                  <button onClick={handleLogOut} className="btn btn-ghost">
+                    Log-Out
+                  </button>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="login">Login</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <a className="btn btn-ghost text-3xl">
@@ -71,19 +84,29 @@ const handleLogOut=()=>{
             <li>
               <Link to="/order/salad">Our Shop</Link>
             </li>
+            <li>
+              <Link to="/">
+                
+                  <FaShoppingCart></FaShoppingCart>
+                  <div className="badge badge-secondary">+99</div>
+               
+              </Link>
+            </li>
 
-              {
-                user ?
-                <>
-                
-                  <span>{user ?.displayName}</span>
-                <button onClick={handleLogOut} className="btn btn-ghost">Log-Out</button>
-                
-                </>:
-                <><li>
-                <Link to="login">Login</Link>
-              </li></>
-              }
+            {user ? (
+              <>
+                {/* <span>{user ?.displayName}</span> */}
+                <button onClick={handleLogOut} className="btn btn-ghost">
+                  Log-Out
+                </button>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="login">Login</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
