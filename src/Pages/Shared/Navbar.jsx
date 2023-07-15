@@ -88,7 +88,7 @@ const Navbar = () => {
               <Link to="/">
                 
                   <FaShoppingCart></FaShoppingCart>
-                  <div className="badge badge-secondary">+99</div>
+                  <div className="badge badge-secondary">+0</div>
                
               </Link>
             </li>
