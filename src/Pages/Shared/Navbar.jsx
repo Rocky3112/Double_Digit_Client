@@ -47,7 +47,7 @@ const Navbar = () => {
                 <Link to="/order/salad">Our Shop</Link>
               </li>
               <li>
-              <Link to="/">
+              <Link to="/dashboard/myCart">
                 
                   <FaShoppingCart></FaShoppingCart>
                   <div className="badge badge-secondary">+{cart?.length || 0}</div>
@@ -87,7 +87,7 @@ const Navbar = () => {
               <Link to="/order/salad">Our Shop</Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/dashboard/myCart">
                 
                   <FaShoppingCart></FaShoppingCart>
                   <div className="badge badge-secondary">+{cart?.length || 0}</div>
