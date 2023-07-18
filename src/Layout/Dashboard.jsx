@@ -8,6 +8,7 @@ import {
 import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
+  
     const [cart] =useCart();
   return (
     <div>
