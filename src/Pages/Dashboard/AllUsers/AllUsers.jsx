@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 
@@ -12,29 +13,29 @@ const AllUsers = () => {
         return res.json();
     })
 
-    // const handleMakeAdmin = user =>{
-    //     fetch(`http://localhost:5000/users/admin/${user._id}`, {
-    //         method: 'PATCH'
-    //     })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         console.log(data)
-    //         if(data.modifiedCount){
-    //             refetch();
-    //             Swal.fire({
-    //                 position: 'top-end',
-    //                 icon: 'success',
-    //                 title: `${user.name} is an Admin Now!`,
-    //                 showConfirmButton: false,
-    //                 timer: 1500
-    //               })
-    //         }
-    //     })
-    // }
+    const handleMakeAdmin = user =>{
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: 'PATCH'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.modifiedCount){
+                refetch();
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: `${user.name} is an Admin Now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
+    }
 
-    // const handleDelete = user => {
+    const handleDelete = user => {
 
-    // }
+    }
 
     return (
         <div className="w-full">
