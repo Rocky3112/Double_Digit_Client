@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
@@ -33,9 +34,33 @@ const AllUsers = () => {
         })
     }
 
-    const handleDelete = user => {
-
-    }
+    const handleDelete=(item)=>{
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+           fetch(`http://localhost:5000/carts/${item._id}`, {
+            method:'DELETE'
+           })
+           .then(res=>res.json())
+           .then(data=>{
+            if(data.deletedCount > 0){
+                refetch();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                  )
+            }
+           })
+           
+          })
+      }
 
     return (
         <div className="w-full">
