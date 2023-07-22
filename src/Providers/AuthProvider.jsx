@@ -50,15 +50,16 @@ useEffect(()=>{
             axios.post('http://localhost:5000/jwt', {
             email: currentUser.email})
           .then(data=>{
-            console.log(data.data.token);
+            // console.log(data.data.token);
             localStorage.setItem('access_token', data.data.token)
+            setLoading(false);
           })
         }
         else{
             localStorage.removeItem('access-token')
         }
         setUser(currentUser) 
-        setLoading(false)
+        
     })
     return ()=>{
         unsubscribe();
