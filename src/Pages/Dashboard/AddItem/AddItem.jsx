@@ -2,10 +2,11 @@
 import { useForm } from 'react-hook-form';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 
+const img_hosting_token = import.meta.env.VITE_image_upload_token;
 const AddItem = () => {
     
     const { register, handleSubmit, reset } = useForm();
-
+    const img_url_token =`https://api.imgbb.com/1/upload?expiration=600&key=${img_hosting_token}`
 
     const onSubmit = data => {
         console.log(data);
