@@ -18,7 +18,7 @@ const MenuCategory = ({items, title, img}) => {
             }
         </div>
         <div className="card-actions justify-center">
-    <Link to={`/order/${title}`}>
+        <Link to={`/order/${title}`}>
           <button className="uppercase btn btn-outline my-3 border-0 border-b-2 ">Add Favourite Food</button>
           </Link>
         </div>
