@@ -1,9 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useForm } from 'react-hook-form';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const img_hosting_token = import.meta.env.VITE_image_upload_token;
 const AddItem = () => {
+    const [axiosSecure]= useAxiosSecure()
     
     const { register, handleSubmit, reset } = useForm();
     const img_url_token =`https://api.imgbb.com/1/upload?key=${img_hosting_token}`
@@ -24,14 +27,28 @@ const AddItem = () => {
                 const {name, price, category, recipe} = data;
                 const newItem = {name, price: parseFloat(price), category, recipe, image:imgURL}
                 console.log(newItem)
+                axiosSecure.post('/menu', newItem)
+                .then(data => {
+                    console.log('after posting new menu item', data.data)
+                    if(data.data.insertedId){
+                        reset();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Item added successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
+                })
             }
-           
         })
+
     };
     
     
     return (
-        <div className="w-full px-10">
+        <div className="w-full px-10 my-10">
             <SectionTitle subHeading="What's new" heading="Add an item" ></SectionTitle>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full mb-4">
@@ -76,7 +93,9 @@ const AddItem = () => {
                     </label>
                     <input type="file" {...register("image", { required: true })} className="file-input file-input-bordered w-full " />
                 </div>
-                <input className="btn btn-sm mt-4" type="submit" value="Add Item" />
+                <div className=' text-center'>
+                <input className="btn hover:bg-slate-600 hover:text-white mt-4 px-10 bg-slate-400 text-center" type="submit" value="Add Item" />
+                </div>
             </form>
         </div>
     );
