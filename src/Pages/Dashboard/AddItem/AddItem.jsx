@@ -9,7 +9,18 @@ const AddItem = () => {
     const img_url_token =`https://api.imgbb.com/1/upload?expiration=600&key=${img_hosting_token}`
 
     const onSubmit = data => {
-        console.log(data);
+        // console.log(data);
+        const formData = new FormData();
+        formData.append('image',data.image[0])
+
+        fetch(img_url_token, {
+            method: 'POST',
+            body: formData
+        })
+        .then(res=>res.json())
+        .then(imgResponse=> {
+            console.log(imgResponse);
+        })
     };
     
     
