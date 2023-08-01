@@ -11,7 +11,7 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 const SignUp = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { createUser,  } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const onSubmit = data => {
