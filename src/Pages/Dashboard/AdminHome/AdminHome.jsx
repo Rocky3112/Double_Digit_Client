@@ -6,9 +6,6 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie, ResponsiveContainer, Legend } from 'recharts';
 
 
-
-
-
 const AdminHome = () => {
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
