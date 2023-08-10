@@ -82,7 +82,7 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="btn btn-ghost text-3xl">
-            BisTro <span className=" text-orange-500">Boss</span>
+            Double <span className=" text-orange-500">Digit</span>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
